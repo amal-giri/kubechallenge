@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:  
+  name: kubetest  
+spec:  
+  replicas: 1  
+  selector: 
+    matchLabels: 
+      app: kubetest-pod  
+  template:  
+    metadata:  
+      labels:  
+        app: kubetest-pod  
+    spec:
+      containers:  
+      - name: challenge
+        image: kubetest:1.0
+        imagePullPolicy: Never
+        env:
+          - name: NAME
+            valueFrom:
+              configMapKeyRef:
+                name: kube-test
+                key: name
+        ports:  
+        - containerPort: 4000
+ 
