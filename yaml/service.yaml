@@ -10,5 +10,4 @@ spec:
       name: web
   selector:
     app: kubetest-pod
-#  type: ClusterIP
-  type: NodePort
+  type: ClusterIP
